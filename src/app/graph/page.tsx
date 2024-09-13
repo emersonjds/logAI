@@ -121,7 +121,7 @@ const GraphWithModal = () => {
   return (
     <DefaultLayout>
       <div className="mx-auto flex flex-1 flex-col">
-        <Breadcrumb pageName="Api Graphs" />
+        <Breadcrumb pageName="Analise de API's em tempo real" />
         <div className="radius w-2/3 w-60 border p-4">
           <h1>Status</h1>
           <p>
@@ -165,17 +165,26 @@ const GraphWithModal = () => {
               outline: "none",
               padding: "20px",
               width: "400px",
-              height: "400px",
+              height: "300px",
             },
           }}
         >
           <h2>Instruções para {selectedNode}</h2>
+          <br />
           {selectedNode === "Senior Sistemas" || "SSO" ? (
-            <p>O nó {selectedNode} está apresentando problemas!</p>
+            <p className="text-xl3 bold text-black">
+              O nó {selectedNode} está apresentando problemas! Nosso agente
+              identificou que existe uma falha no Banco de Dados A que é a causa
+              raiz
+            </p>
           ) : (
             <p>Essas são as instruções para a {selectedNode}.</p>
           )}
-          <button onClick={closeModal}>Fechar</button>
+          <br />
+          <br />
+          <button onClick={closeModal} className="border p-4">
+            Fechar
+          </button>
         </Modal>
       </div>
     </DefaultLayout>
