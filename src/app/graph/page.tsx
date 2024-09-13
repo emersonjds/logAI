@@ -3,7 +3,7 @@ import cytoscape from "cytoscape";
 import Modal from "react-modal";
 
 const GraphWithModal = () => {
-  const cyRef = useRef(null);
+  const cyRef = useRef<cytoscape.Core | null>(null);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
 
