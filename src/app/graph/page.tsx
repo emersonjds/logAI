@@ -18,22 +18,41 @@ const GraphWithModal = () => {
 
         elements: [
           // Nó A e suas conexões
-          { data: { id: "a", label: "API A" } },
-          { data: { id: "b", label: "API B" } },
-          { data: { id: "c", label: "API C" } },
-          { data: { source: "b", target: "a" } },
-          { data: { source: "c", target: "a" } },
+          // { data: { id: "a", label: "API A" } },
+          // { data: { id: "b", label: "API B" } },
+          // { data: { id: "c", label: "API C" } },
+          // { data: { source: "b", target: "a" } },
+          // { data: { source: "c", target: "a" } },
 
           // Nó D e suas conexões, com o nó G em estado de erro
-          { data: { id: "d", label: "API D" } },
-          { data: { id: "e", label: "API E" } },
-          { data: { id: "f", label: "API F" } },
-          { data: { id: "g", label: "API G", error: true } }, // Nó com erro
-          { data: { id: "h", label: "API H" } },
-          { data: { source: "e", target: "d" } },
-          { data: { source: "f", target: "d" } },
-          { data: { source: "g", target: "d" } },
-          { data: { source: "h", target: "d" } },
+          // { data: { id: "d", label: "API D" } },
+          // { data: { id: "e", label: "API E" } },
+          // { data: { id: "f", label: "API F", error: true } },
+          // { data: { id: "g", label: "API G", error: true } }, // Nó com erro
+          // { data: { id: "h", label: "API H" } },
+          // { data: { source: "e", target: "d" } },
+          // { data: { source: "f", target: "d" } },
+          // { data: { source: "g", target: "d" } },
+          // { data: { source: "h", target: "d" } },
+
+          { data: { id: "i", label: "Aprovador" } },
+          { data: { id: "j", label: "PortoNet", error: true } },
+          { data: { id: "k", label: "Senior Sistemas", error: true } },
+          { data: { id: "l", label: "SSO" } }, // Nó com erro
+          { data: { id: "m", label: "Agendamento Quadra" } },
+          { data: { id: "n", label: "Ecommerce" } },
+          { data: { id: "o", label: "Porto Bank" } },
+          { data: { id: "p", label: "BD A", error: true } },
+          { data: { id: "q", label: "BD B" } },
+          { data: { source: "i", target: "j" } },
+          { data: { source: "k", target: "j" } },
+          { data: { source: "l", target: "j" } },
+          { data: { source: "m", target: "j" } },
+          { data: { source: "n", target: "j" } },
+          { data: { source: "o", target: "j" } },
+          { data: { source: "p", target: "k" } },
+          { data: { source: "q", target: "k" } },
+          // { data: { id: "p", label: "SSO" } },
         ],
 
         style: [
@@ -41,7 +60,7 @@ const GraphWithModal = () => {
           {
             selector: "node",
             style: {
-              "background-color": "#007bff",
+              "background-color": "#6ebd4f",
               label: "data(label)",
               "text-valign": "center",
               "text-halign": "center",
@@ -103,6 +122,19 @@ const GraphWithModal = () => {
     <DefaultLayout>
       <div className="mx-auto flex flex-1 flex-col">
         <Breadcrumb pageName="Api Graphs" />
+        <div className="radius w-2/3 w-60 border p-4">
+          <h1>Status</h1>
+          <p>
+            PortoNet: <span className="text-red-500">Erro</span>
+          </p>
+          <p>
+            Senior Sistemas: <span className="text-red-500">Erro</span>
+          </p>
+          <p>
+            SSO: <span className="text-green-500">Ok</span>
+          </p>
+        </div>
+
         <div id="cy" style={{ width: "100%", height: "800px" }}></div>
 
         <Modal
@@ -138,7 +170,7 @@ const GraphWithModal = () => {
           }}
         >
           <h2>Instruções para {selectedNode}</h2>
-          {selectedNode === "API G" ? (
+          {selectedNode === "Senior Sistemas" || "SSO" ? (
             <p>O nó {selectedNode} está apresentando problemas!</p>
           ) : (
             <p>Essas são as instruções para a {selectedNode}.</p>
